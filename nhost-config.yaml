@@ -1,0 +1,24 @@
+version: 3
+services:
+  functions:
+    - name: pocketbase
+      image:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+        - port: 8080
+          type: http
+          ingress:
+            fqdn:
+              - pocketbase.${NHOST_SUBDOMAIN}.${NHOST_REGION}.nhost.run
+      resources:
+        compute:
+          cpu: 62
+          memory: 128
+      volumes:
+        - name: pocketbase-data
+          path: /app/pb_data
+          size: 1Gi
+      environment:
+        - name: PORT
+          value: "8080"
