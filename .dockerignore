@@ -2,5 +2,9 @@ node_modules
 .git
 .gitignore
 README.md
-Dockerfile
 .dockerignore
+*.log
+.DS_Store
+pb_data/logs.db*
+pb_data/data.db*
+pb_data/data.db-*

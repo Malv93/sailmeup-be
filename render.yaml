@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: pocketbase
+    env: docker
+    repo: https://github.com/Malv93/sailmeup-be
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    branch: main
+    dockerCommand: ./pocketbase serve --http=0.0.0.0:$PORT --dir=/app/pb_data
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+    disk:
+      name: pocketbase-data
+      mountPath: /app/pb_data
+      sizeGB: 1
